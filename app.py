@@ -8,7 +8,7 @@ def webhook():
     req = request.get_json()
     params = req['queryResult']['parameters']
 
-    name = params.get('Name', 'bạn')
+    name = params.get('name', 'bạn')
     dichvu = params.get('dichvu')
     date = params.get('date')
     time = params.get('time')
