@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from dateutil import parser
 import os
 
 app = Flask(__name__)
@@ -17,7 +18,10 @@ def webhook():
     phone = params.get('phone')
     email = params.get('email')
 
-    reply = f" Bạn {name} đã đặt lịch {dichvu} {LoaiKham} lúc {time} ngày {date}. Chúng tôi sẽ liên hệ qua số {phone} và {email}."
+    date_formatted = parser.parse(date).strftime('%d/%m/%Y')
+    time_formatted = parser.parse(time).strftime('%H:%M')
+
+    reply = f"Bạn {name} đã đặt lịch khám {LoaiKham} lúc {time_formatted} ngày {date_formatted}. Chúng tôi sẽ liên hệ qua số {phone} và {email}."
     return jsonify({"fulfillmentText": reply})
 
 if __name__ == '__main__':
