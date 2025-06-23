@@ -7,6 +7,7 @@ app = Flask(__name__)
 def webhook():
     req = request.get_json()
     params = req['queryResult']['parameters']
+    print(" Dữ liệu nhận được từ Dialogflow:", params)
 
     name = params.get('name')
     dichvu = params.get('dichvu')
