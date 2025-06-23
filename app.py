@@ -16,8 +16,7 @@ def webhook():
     phone = params.get('phone')
     email = params.get('email')
 
-
-    reply = f"✅ Bạn {name} đã đặt lịch {dichvu} {LoaiKham} lúc {time} ngày {date}. Chúng tôi sẽ liên hệ qua số {phone} và {email}."
+    reply = f" Bạn {name} đã đặt lịch {dichvu} {LoaiKham} lúc {time} ngày {date}. Chúng tôi sẽ liên hệ qua số {phone} và {email}."
     return jsonify({"fulfillmentText": reply})
 
 if __name__ == '__main__':
