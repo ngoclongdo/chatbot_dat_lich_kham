@@ -10,7 +10,7 @@ def webhook():
     params = req['queryResult']['parameters']
     print(" Dữ liệu nhận được từ Dialogflow:", params)
 
-    name = params.get('name')
+    person = params.get('person')
     dichvu = params.get('dichvu')
     date = params.get('date')
     time = params.get('time')
@@ -21,7 +21,7 @@ def webhook():
     date_formatted = parser.parse(date).strftime('%d/%m/%Y')
     time_formatted = parser.parse(time).strftime('%H:%M')
 
-    reply = f"Bạn {name} đã đặt lịch khám {LoaiKham} lúc {time_formatted} ngày {date_formatted}. Chúng tôi sẽ liên hệ qua số {phone} và {email}."
+    reply = f"Bạn {person} đã đặt lịch khám {LoaiKham} lúc {time_formatted} ngày {date_formatted}. Chúng tôi sẽ liên hệ qua số {phone} và {email}."
     return jsonify({"fulfillmentText": reply})
 
 if __name__ == '__main__':
