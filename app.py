@@ -10,7 +10,7 @@ def webhook():
     params = req['queryResult']['parameters']
     print(" Dữ liệu nhận được từ Dialogflow:", params)
 
-    person = params.get('person')
+    person = params.get('person', {}).get('name', 'bạn')
     dichvu = params.get('dichvu')
     date = params.get('date')
     time = params.get('time')
